@@ -11,30 +11,38 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final FlutterTts flutterTts = FlutterTts();
+    TextEditingController nameController = TextEditingController();
+
     speak() async {
-      await flutterTts.speak("Testing 123");
+      await flutterTts.speak(nameController.text);
     }
+
 
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text("TTS"),
-        ),
-        body: Container(
-          child: Center(
-            child: Container(
-              child: RaisedButton(
-                child: Text(
-                  'Click me for a surprise',
-                ),
-                onPressed: () {
-                  speak();
-                },
-              ),
-            ),
+          appBar: AppBar(
+            title: const Text("TTS"),
           ),
-        ),
-      ),
+          body: Center(
+            child: Column(
+              children: [
+                TextField(
+                  controller: nameController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'User Name',
+                  ),
+                ),
+                RaisedButton(
+                    onPressed: () {
+                      speak();
+                    },
+                    child: const Text(
+                      "Click here for a surprise!",
+                    )),
+              ],
+            ),
+          )),
     );
   }
 }
