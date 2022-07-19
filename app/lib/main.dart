@@ -5,14 +5,13 @@ import 'package:app/bionic-page.dart';
 import 'package:app/stt-page.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
-
 void main() {
   runApp(MaterialApp(
     home: MyApp(),
     routes: {
       '/tts': (context) => ttspage(),
       '/stt': (context) => SpeechScreen(),
-       '/bionic': (context) => bionicpage(),
+      '/bionic': (context) => bionicpage(),
     },
   ));
 }
@@ -51,22 +50,37 @@ class MyApp extends StatelessWidget {
                     style: TextStyle(fontSize: 45),
                   ),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/tts');
                   },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30.0),
+                    ),
+                  ),
                   child: Text("TTS"),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/stt');
                   },
+                   style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius:  BorderRadius.circular(30.0),
+                    ),
+                  ),
                   child: const Text("Speech to Text"),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/bionic');
                   },
+                   style: ElevatedButton.styleFrom(
+                    shape:  RoundedRectangleBorder(
+                      borderRadius:  BorderRadius.circular(30.0),
+                    ),
+                  ),
                   child: const Text("Bionic text"),
                 ),
               ],
