@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:app/tts-page.dart';
+import 'package:app/bionic-page.dart';
+import 'package:app/stt-page.dart';
+import 'package:speech_to_text/speech_to_text.dart';
+
 
 void main() {
   runApp(MaterialApp(
     home: MyApp(),
     routes: {
       '/tts': (context) => ttspage(),
-      // '/view': (context) => viewer(),
-      // '/decider': (context) => finalDecider(),
+      '/stt': (context) => SpeechScreen(),
+       '/bionic': (context) => bionicpage(),
     },
   ));
 }
@@ -55,13 +59,13 @@ class MyApp extends StatelessWidget {
                 ),
                 RaisedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/tts');
+                    Navigator.pushNamed(context, '/stt');
                   },
                   child: const Text("Speech to Text"),
                 ),
                 RaisedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/tts');
+                    Navigator.pushNamed(context, '/bionic');
                   },
                   child: const Text("Bionic text"),
                 ),
