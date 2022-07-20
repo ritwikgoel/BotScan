@@ -83,6 +83,13 @@ class _SpeechScreenState extends State<SpeechScreen> {
       body: SingleChildScrollView(
         reverse: true,
         child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Colors.green, Colors.blue])),
           padding: const EdgeInsets.fromLTRB(30.0, 30.0, 30.0, 150.0),
           child: TextHighlight(
             text: _text,

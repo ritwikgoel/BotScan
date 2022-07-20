@@ -11,11 +11,18 @@ class bionicpage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
-            title: const Text("Bionic Rreader"),
-          ),
+          
           body: Center(
-            child: Column(),
+            child: 
+            Container(
+              height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Colors.green, Colors.blue])),
+            )
           )),
     );
   }
