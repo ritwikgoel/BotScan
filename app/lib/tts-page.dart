@@ -54,7 +54,7 @@ class ttspage extends StatelessWidget {
                         speak();
                       },
                       child: const Text(
-                        "Click here for a surprise!",
+                        "Convert to speech!",
                       )),
                 ],
               ),

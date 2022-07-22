@@ -4,13 +4,14 @@ import 'package:app/tts-page.dart';
 import 'package:app/bionic-page.dart';
 import 'package:app/stt-page.dart';
 import 'package:speech_to_text/speech_to_text.dart';
+import 'package:app/image-capture.dart';
 
 void main() {
   runApp(MaterialApp(
     home: MyApp(),
     routes: {
       '/tts': (context) => ttspage(),
-      '/stt': (context) => SpeechScreen(),
+      '/stt': (context) => MyHomePage(),
       '/bionic': (context) => bionicpage(),
     },
   ));

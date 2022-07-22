@@ -38,6 +38,8 @@ dependencies:
   speech_to_text: ^5.6.0
   avatar_glow: ^2.0.2
   highlight_text: ^1.4.0
+  learning_input_image: ^0.0.6+2
+  learning_text_recognition: ^0.0.4
 
 dev_dependencies:
   flutter_test:
