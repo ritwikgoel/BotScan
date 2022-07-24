@@ -1,10 +1,11 @@
+import 'package:app/image-capture.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:app/tts-page.dart';
 import 'package:app/bionic-page.dart';
 import 'package:app/stt-page.dart';
-import 'package:speech_to_text/speech_to_text.dart';
-import 'package:app/image-capture.dart';
+import 'dart:async';
+import 'dart:io';
 
 void main() {
   runApp(MaterialApp(
@@ -12,7 +13,7 @@ void main() {
     routes: {
       '/tts': (context) => ttspage(),
       '/stt': (context) => MyHomePage(),
-      '/bionic': (context) => bionicpage(),
+      '/bionic': (context) => OCRPage(),
     },
   ));
 }

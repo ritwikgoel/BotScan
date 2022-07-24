@@ -1,27 +1,64 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tts/flutter_tts.dart';
-import 'package:app/tts-page.dart';
-import 'package:app/bionic-page.dart';
-import 'package:app/stt-page.dart';
-import 'package:learning_input_image/learning_input_image.dart';
-import 'package:speech_to_text/speech_to_text.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/foundation/key.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:async';
+import 'dart:io';
+import 'package:flutter_mobile_vision/flutter_mobile_vision.dart';
 
 
-class imgcapture extends StatelessWidget {
-  const imgcapture({Key? key}) : super(key: key);
-
+class OCRPage extends StatefulWidget {
+  @override
+  _OCRPageState createState() => _OCRPageState();
+}
+class _OCRPageState extends State<OCRPage> {
+int _ocrCamera = FlutterMobileVision.CAMERA_BACK;
+  String _text = "TEXT";
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: InputCameraView(
-  canSwitchMode: false,
-  mode: InputCameraMode.gallery,
-  title: 'Text Recognition',
-  onImage: (InputImage image) {
-    // now we can feed the input image into text recognition process
-  },
-),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white70,
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            title: Text('OCR In Flutter'),
+            centerTitle: true,
+          ),
+          body: Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(_text,style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold),
+                ),
+                Center(
+                  child: RaisedButton(
+                   onPressed: _read,
+                   child: Text('Scanning',
+                     style: TextStyle(fontSize: 16),
+                   ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+      ),
     );
-    
+  }
+Future<Null> _read() async {
+    List<OcrText> texts = [];
+    try {
+      texts = await FlutterMobileVision.read(
+        camera: _ocrCamera,
+        waitTap: true,
+      );
+setState(() {
+        _text = texts[0].value;
+      });
+    } on Exception {
+      texts.add( OcrText('Failed to recognize text'));
+    }
   }
 }
