@@ -13,7 +13,7 @@ void main() {
     routes: {
       '/tts': (context) => ttspage(),
       '/stt': (context) => MyHomePage(),
-      '/bionic': (context) => OCRPage(),
+      '/bionic': (context) => ttspage(),
     },
   ));
 }
