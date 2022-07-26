@@ -9,7 +9,7 @@ void main() {
     home: MyApp(),
     routes: {
       '/tts': (context) => ttspage(),
-       '/stt': (context) => OCRPage(),
+       '/stt': (context) => get_img(),
       '/bionic': (context) => ttspage(),
     },
   ));
