@@ -89,7 +89,7 @@ class MyApp extends StatelessWidget {
                     primary: Colors.transparent,
                   ),
                   child: const Text(
-                    "Speech to Text",
+                    "OCR",
                     style: TextStyle(fontSize: 25),
                   ),
                 ),
