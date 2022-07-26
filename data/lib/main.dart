@@ -2,6 +2,7 @@ import 'package:data/img-sel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:data/tts-page.dart';
+import 'package:data/pictotext.dart';
 
 
 void main() {
@@ -11,6 +12,7 @@ void main() {
       '/tts': (context) => ttspage(),
        '/stt': (context) => get_img(),
       '/bionic': (context) => ttspage(),
+      '/pictotext':(context) => pictotext(),
     },
   ));
 }
@@ -68,7 +70,7 @@ class MyApp extends StatelessWidget {
                     primary: Colors.transparent,
                     minimumSize: const Size(200, 75),
                   ),
-                  child: Text(
+                  child: const Text(
                     "Text To Speech",
                     style: TextStyle(fontSize: 25),
                   ),

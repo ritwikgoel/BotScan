@@ -18,15 +18,19 @@ class get_img extends StatefulWidget {
 class _get_imgState extends State<get_img> {
   final ImagePicker _picker = ImagePicker();
   Future pickImage() async {
+    late String sender;
     final image = await ImagePicker().pickImage(source: ImageSource.camera);
     if (image == null) return;
 
     try {
       String _resultString = await SimpleOcrPlugin.performOCR(image.path);
+      sender = _resultString;
       print("OCR results => $_resultString");
     } catch (e) {
       print("exception on OCR operation: ${e.toString()}");
     }
+    Navigator.pushNamed(context, "/pictotext",
+        arguments: {'text': sender});
   }
 
   @override
