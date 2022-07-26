@@ -22,10 +22,21 @@ class _get_imgState extends State<get_img> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(48.0),
+      body: Center(
         child: Container(
-          child: ElevatedButton(onPressed: pickImage, child: const Text("Click here")),
+height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Colors.green, Colors.blue])),
+          child: TextButton(
+              onPressed: pickImage,
+              child: const Text(
+                "Tap to Begin",
+                style: TextStyle(fontSize: 45, color: Color.fromARGB(255, 1, 34, 60)),
+              )),
         ),
       ),
     );
