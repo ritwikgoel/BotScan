@@ -29,8 +29,7 @@ class _get_imgState extends State<get_img> {
     } catch (e) {
       print("exception on OCR operation: ${e.toString()}");
     }
-    Navigator.pushNamed(context, "/pictotext",
-        arguments: {'text': sender});
+    Navigator.pushNamed(context, "/pictotext", arguments: {'text': sender});
   }
 
   @override
