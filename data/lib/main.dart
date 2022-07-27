@@ -1,4 +1,5 @@
 import 'package:data/img-sel.dart';
+import 'package:data/into.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:data/tts-page.dart';
@@ -7,8 +8,9 @@ import 'package:data/pictotext.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: MyApp(),
+    home: intro(),
     routes: {
+      '/home': (context) => MyApp(),
       '/tts': (context) => ttspage(),
        '/stt': (context) => get_img(),
       '/bionic': (context) => ttspage(),

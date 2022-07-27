@@ -18,6 +18,8 @@ class _pictotextState extends State<pictotext> {
   @override
   Widget build(BuildContext context) {
     Map arguments = ModalRoute.of(context)?.settings.arguments as Map;
+      double opacityLevel = 1.0;
+
     double width = MediaQuery.of(context).size.width;
     print("\n\n testinggggg");
     print(arguments);

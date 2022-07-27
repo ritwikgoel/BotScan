@@ -37,6 +37,7 @@ dependencies:
   flutter_tts: ^3.5.0
   image_picker: ^0.8.5+3
   simple_ocr_plugin: ^0.1.1
+  lottie: ^1.4.0
 
 
 dev_dependencies:
