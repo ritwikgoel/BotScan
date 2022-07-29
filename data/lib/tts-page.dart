@@ -2,6 +2,8 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:lottie/lottie.dart';
+import 'package:page_transition/page_transition.dart';
 
 class ttspage extends StatelessWidget {
   const ttspage({Key? key}) : super(key: key);
@@ -17,32 +19,34 @@ class ttspage extends StatelessWidget {
 
     return MaterialApp(
       home: Scaffold(
+          backgroundColor: Colors.black,
           body: Container(
-            
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [Colors.green, Colors.blue])),
             child: Center(
               child: Column(
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height / 4,
+                    height: MediaQuery.of(context).size.height / 6,
                   ),
+                  Lottie.network(
+                      "https://assets7.lottiefiles.com/packages/lf20_wsyyln4p.json",
+                      height: MediaQuery.of(context).size.height / 7),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
                       controller: nameController,
                       decoration: const InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.cyan),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.cyan),
+                        ),
                         contentPadding: EdgeInsets.all(30),
                         labelText: 'Text To Speech',
-                        labelStyle: TextStyle(fontSize: 35,
-                        color: Colors.black),
-                        
-                        
+                        labelStyle:
+                            TextStyle(fontSize: 35, color: Colors.white),
                       ),
                     ),
                   ),
@@ -50,6 +54,14 @@ class ttspage extends StatelessWidget {
                     height: 30,
                   ),
                   ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(28.0),
+                            side: const BorderSide(
+                                color: Color.fromARGB(255, 51, 72, 135))),
+                        primary: Colors.transparent,
+                        minimumSize: const Size(200, 75),
+                      ),
                       onPressed: () {
                         speak();
                       },

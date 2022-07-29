@@ -1,10 +1,12 @@
+import 'package:data/bionic-page.dart';
 import 'package:data/img-sel.dart';
 import 'package:data/into.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:data/tts-page.dart';
 import 'package:data/pictotext.dart';
-
+import 'package:lottie/lottie.dart';
+import 'package:page_transition/page_transition.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -12,9 +14,9 @@ void main() {
     routes: {
       '/home': (context) => MyApp(),
       '/tts': (context) => ttspage(),
-       '/stt': (context) => get_img(),
+      '/stt': (context) => get_img(),
       '/bionic': (context) => ttspage(),
-      '/pictotext':(context) => pictotext(),
+      '/pictotext': (context) => pictotext(),
     },
   ));
 }
@@ -34,41 +36,47 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.black,
           body: Center(
               child: Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [Colors.green, Colors.blue])),
             child: Column(
               children: [
                 const SizedBox(
-                  height: 25.0,
+                  height: 60.0,
                   width: 100,
                 ),
                 const Padding(
                   padding: EdgeInsets.all(28.0),
                   child: Text(
-                    "Hola!",
-                    style: TextStyle(fontSize: 45),
+                    "An OCR Text to Speech Converter",
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Color.fromARGB(255, 112, 118, 109),
+                        fontStyle: FontStyle.italic),
                   ),
                 ),
-                const SizedBox(
-                  height: 50.0,
+                Lottie.network(
+                    "https://assets9.lottiefiles.com/packages/lf20_rqepjmsu.json",
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height / 5),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 10,
                   width: 100,
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/tts');
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.fade, child: ttspage()));
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(30.0),
-                    ),
+                        borderRadius: BorderRadius.circular(28.0),
+                        side: const BorderSide(
+                            color: Color.fromARGB(255, 51, 72, 135))),
                     primary: Colors.transparent,
                     minimumSize: const Size(200, 75),
                   ),
@@ -83,12 +91,16 @@ class MyApp extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/stt');
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.fade, child: get_img()));
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
+                        borderRadius: BorderRadius.circular(28.0),
+                        side: const BorderSide(
+                            color: Color.fromARGB(255, 51, 72, 135))),
                     minimumSize: const Size(200, 75),
                     primary: Colors.transparent,
                   ),
@@ -103,12 +115,17 @@ class MyApp extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/bionic');
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.fade,
+                            child: bionicpage()));
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
+                        borderRadius: BorderRadius.circular(28.0),
+                        side: const BorderSide(
+                            color: Color.fromARGB(255, 51, 72, 135))),
                     minimumSize: const Size(200, 75),
                     primary: Colors.transparent,
                   ),

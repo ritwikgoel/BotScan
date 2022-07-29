@@ -6,6 +6,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'dart:async';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
+import 'package:lottie/lottie.dart';
 import 'package:simple_ocr_plugin/simple_ocr_plugin.dart';
 
 class get_img extends StatefulWidget {
@@ -35,22 +36,21 @@ class _get_imgState extends State<get_img> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Center(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [Colors.green, Colors.blue])),
-          child: TextButton(
-              onPressed: pickImage,
-              child: const Text(
-                "Tap to Begin",
-                style: TextStyle(
-                    fontSize: 45, color: Color.fromARGB(255, 1, 34, 60)),
-              )),
+        
+        child: Column(
+          children: [
+            SizedBox(height: 40,),
+            Lottie.network("https://assets7.lottiefiles.com/private_files/lf30_weejej4d.json"),
+            TextButton(
+                onPressed: pickImage,
+                child: const Text(
+                  "Tap to Scan",
+                  style: TextStyle(
+                      fontSize: 45, color: Color.fromARGB(255, 25, 72, 107)),
+                )),
+          ],
         ),
       ),
     );
