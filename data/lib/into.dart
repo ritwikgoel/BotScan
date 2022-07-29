@@ -19,31 +19,35 @@ class _introState extends State<intro> {
       backgroundColor: Colors.black,
       body: Column(
         children: [
+          
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 7,
+          ),
           Center(
               child: Padding(
             padding: const EdgeInsets.only(top: 150),
             child: Lottie.network(
-                "https://assets1.lottiefiles.com/packages/lf20_giodppcr.json"),
+                "https://assets2.lottiefiles.com/packages/lf20_kqacgm7o.json"),
           )),
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 10,
+          ),
           ElevatedButton(
-            
             onPressed: () {
               Navigator.pushNamed(context, "/home");
             },
-            child: 
-            Text(
+            child: Text(
               'Get Started!',
-              style: new TextStyle(fontSize: 20,color: const Color.fromARGB(255, 249, 249, 249)),
+              style: new TextStyle(
+                  fontSize: 20, color: Color.fromARGB(255, 168, 168, 168)),
             ),
-            style: 
-            
-            ElevatedButton.styleFrom(
-              padding: EdgeInsets.all(14),
-                primary: Color.fromARGB(255, 93, 3, 109),
+            style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.all(14),
+                primary: Color.fromARGB(255, 0, 0, 0),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(28.0),
-                  
-                )),
+                    borderRadius: BorderRadius.circular(18.0),
+                    side: const BorderSide(
+                        color: Color.fromARGB(255, 51, 72, 135)))),
           )
         ],
       ),
