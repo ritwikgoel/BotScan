@@ -57,8 +57,7 @@ class MyApp extends StatelessWidget {
                         fontStyle: FontStyle.italic),
                   ),
                 ),
-                Lottie.network(
-                    "https://assets9.lottiefiles.com/packages/lf20_rqepjmsu.json",
+                Lottie.asset('assets/synth.json',
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height / 5),
                 SizedBox(

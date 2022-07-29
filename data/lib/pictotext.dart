@@ -21,13 +21,14 @@ class _pictotextState extends State<pictotext> {
       double opacityLevel = 1.0;
 
     double width = MediaQuery.of(context).size.width;
-    print("\n\n testinggggg");
+    //print("\n\n testinggggg");
     print(arguments);
     int printvartemp = arguments['text'].toString().length;
     String printvar =
-        arguments['text'].toString().substring(32, printvartemp - 16);
+        arguments['text'].toString().substring(24, printvartemp - 16);
     int counter = 0;
     return Scaffold(
+      backgroundColor: Colors.black,
         body: SingleChildScrollView(
       child: Column(
         children: [
@@ -35,11 +36,7 @@ class _pictotextState extends State<pictotext> {
             child: Container(
               height: MediaQuery.of(context).size.height / 1.1,
               width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [Colors.green, Colors.blue])),
+              
               child: Padding(
                 padding: const EdgeInsets.all(30.0),
                 child: TextButton(
@@ -48,13 +45,13 @@ class _pictotextState extends State<pictotext> {
                     setState(() {
                       printvar = arguments['text']
                           .toString()
-                          .substring(32, printvartemp - 16);
+                          .substring(20, printvartemp - 16);
                     });
                   },
                   child: SingleChildScrollView(
                     child: Text(
                       printvar,
-                      style: const TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.white),
                     ),
                   ),
                 ),

@@ -35,8 +35,8 @@ class _introState extends State<intro> {
           Center(
               child: Padding(
             padding: const EdgeInsets.only(top: 150),
-            child: Lottie.network(
-                "https://assets2.lottiefiles.com/packages/lf20_kqacgm7o.json"),
+            child: Lottie.asset(
+                "assets/earth.json"),
           )),
           SizedBox(
             height: MediaQuery.of(context).size.height / 7,

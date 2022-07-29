@@ -29,8 +29,8 @@ class ttspage extends StatelessWidget {
                   SizedBox(
                     height: MediaQuery.of(context).size.height / 6,
                   ),
-                  Lottie.network(
-                      "https://assets7.lottiefiles.com/packages/lf20_wsyyln4p.json",
+                  Lottie.asset(
+                      "assets/adown.json",
                       height: MediaQuery.of(context).size.height / 7),
                   Padding(
                     padding: const EdgeInsets.all(8.0),

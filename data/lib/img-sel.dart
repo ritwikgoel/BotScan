@@ -42,13 +42,13 @@ class _get_imgState extends State<get_img> {
         child: Column(
           children: [
             SizedBox(height: 40,),
-            Lottie.network("https://assets7.lottiefiles.com/private_files/lf30_weejej4d.json"),
+            Lottie.asset("assets/blink.json"),
             TextButton(
                 onPressed: pickImage,
                 child: const Text(
                   "Tap to Scan",
                   style: TextStyle(
-                      fontSize: 45, color: Color.fromARGB(255, 25, 72, 107)),
+                      fontSize: 45, color: Color.fromARGB(255, 255, 255, 255),fontStyle: FontStyle.italic),
                 )),
           ],
         ),
