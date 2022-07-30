@@ -12,6 +12,7 @@ class ttspage extends StatelessWidget {
   Widget build(BuildContext context) {
     final FlutterTts flutterTts = FlutterTts();
     TextEditingController nameController = TextEditingController();
+ flutterTts.setLanguage("en-AU");
 
     speak() async {
       await flutterTts.speak(nameController.text);

@@ -25,9 +25,9 @@ class _introState extends State<intro> {
             height: MediaQuery.of(context).size.height / 10,
           ),
           Text(
-            "Speecher OCR",
+            "BotLens",
             style: new TextStyle(
-                fontSize: 20, color: Color.fromARGB(255, 117, 117, 117)),
+                fontSize: 20, color: Color.fromARGB(255, 117, 117, 117),fontStyle: FontStyle.italic),
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height / 65,

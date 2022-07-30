@@ -39,6 +39,7 @@ dependencies:
   simple_ocr_plugin: ^0.1.1
   lottie: ^1.4.0
   page_transition: "^2.0.9"
+  flutter_launcher_icons: ^0.9.3
 
 
 dev_dependencies:
@@ -52,9 +53,13 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon2.png"
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter packages.
 flutter:
 
