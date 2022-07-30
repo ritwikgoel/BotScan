@@ -29,12 +29,12 @@ class ttspage extends StatelessWidget {
                   SizedBox(
                     height: MediaQuery.of(context).size.height / 6,
                   ),
-                  Lottie.asset(
-                      "assets/adown.json",
+                  Lottie.asset("assets/adown.json",
                       height: MediaQuery.of(context).size.height / 7),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
+                      style: const TextStyle(color: Colors.white),
                       controller: nameController,
                       decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(

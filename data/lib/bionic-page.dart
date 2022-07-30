@@ -9,13 +9,10 @@ class bionicpage extends StatelessWidget {
       home: Scaffold(
           backgroundColor: Colors.black,
           body: Center(
-            child: 
-            Container(
-              height: MediaQuery.of(context).size.height,
+              child: Container(
+            height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            
-            )
-          )),
+          ))),
     );
   }
 }
