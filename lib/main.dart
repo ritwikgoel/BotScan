@@ -1,10 +1,13 @@
 import 'package:data/bionic-page.dart';
+import 'package:data/bionic-text.dart';
 import 'package:data/img-sel.dart';
 import 'package:data/into.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:data/tts-page.dart';
 import 'package:data/pictotext.dart';
+
+import 'package:data/bionic-text.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -17,6 +20,7 @@ void main() {
       '/stt': (context) => get_img(),
       '/bionic': (context) => ttspage(),
       '/pictotext': (context) => pictotext(),
+      '/bionicview': (context) => bionicview(),
     },
   ));
 }

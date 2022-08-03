@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -15,11 +14,12 @@ class bionicpage extends StatefulWidget {
   State<bionicpage> createState() => _bionicpageState();
 }
 
-class _bionicpageState extends State<bionicpage> {
+var response;
 
+class _bionicpageState extends State<bionicpage> {
   Future<void> bionify() async {
-      var apikey = apihelper().apikey;
-  print(apikey);
+    var apikey = apihelper().apikey;
+    print(apikey);
     final url = Uri.parse("https://bionic-reading1.p.rapidapi.com/convert");
     final headers = {
       "content-type": "application/x-www-form-urlencoded",
@@ -35,18 +35,17 @@ class _bionicpageState extends State<bionicpage> {
       "fixation": "1",
       "saccade": "10"
     };
-    final response = await post(url, headers: headers, body: json);
-    String jsonsDataString = response
-        .toString(); // toString of Response's body is assigned to jsonDataString
+    response = await post(url, headers: headers, body: json);
+    //String jsonsDataString = response.toString(); // toString of Response's body is assigned to jsonDataString
 
     print(response.body);
     print('Status code: ${response.statusCode}');
+    Navigator.pushNamed(context, "/bionicview", arguments: {'text': response.body});
   }
 
   @override
   Widget build(BuildContext context) {
     TextEditingController bionicController = TextEditingController();
-
     return MaterialApp(
       home: Scaffold(
           backgroundColor: Colors.black,
