@@ -19,50 +19,52 @@ class _introState extends State<intro> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Column(
-        children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 10,
-          ),
-          Text(
-            "BotLens",
-            style: new TextStyle(
-                fontSize: 20, color: Color.fromARGB(255, 117, 117, 117),fontStyle: FontStyle.italic),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 65,
-          ),
-          Center(
-              child: Padding(
-            padding: const EdgeInsets.only(top: 150),
-            child: Lottie.asset(
-                "assets/earth.json"),
-          )),
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 7,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  PageTransition(
-                      type: PageTransitionType.fade, child: MyApp()));
-            },
-            child: Text(
-              'Get Started!',
-              style: new TextStyle(
-                  fontSize: 20,
-                  color: const Color.fromARGB(255, 146, 144, 144)),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 10,
             ),
-            style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.all(14),
-                primary: Color.fromARGB(255, 0, 0, 0),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                    side: const BorderSide(
-                        color: Color.fromARGB(255, 51, 72, 135)))),
-          )
-        ],
+            Text(
+              "BotLens",
+              style: new TextStyle(
+                  fontSize: 20, color: Color.fromARGB(255, 117, 117, 117),fontStyle: FontStyle.italic),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 65,
+            ),
+            Center(
+                child: Padding(
+              padding: const EdgeInsets.only(top: 150),
+              child: Lottie.asset(
+                  "assets/earth.json"),
+            )),
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 7,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.fade, child: MyApp()));
+              },
+              child: Text(
+                'Get Started!',
+                style: new TextStyle(
+                    fontSize: 20,
+                    color: const Color.fromARGB(255, 146, 144, 144)),
+              ),
+              style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.all(14),
+                  primary: Color.fromARGB(255, 0, 0, 0),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: const BorderSide(
+                          color: Color.fromARGB(255, 51, 72, 135)))),
+            )
+          ],
+        ),
       ),
     );
   }
