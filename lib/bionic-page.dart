@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
 import 'package:http/http.dart' as http;
+import 'package:simple_ocr_plugin/simple_ocr_plugin.dart';
 import 'api-handler.dart';
 
 class bionicpage extends StatefulWidget {
@@ -17,6 +19,22 @@ var response;
 final TextEditingController bionicController = TextEditingController();
 
 class _bionicpageState extends State<bionicpage> {
+    final ImagePicker _picker = ImagePicker();
+     Future pickImage() async {
+    late String sender;
+    final image = await ImagePicker().pickImage(source: ImageSource.camera);
+    if (image == null) return;
+
+    try {
+      String _resultString = await SimpleOcrPlugin.performOCR(image.path);
+      sender = _resultString;
+      print("OCR results => $_resultString");
+    } catch (e) {
+      print("exception on OCR operation: ${e.toString()}");
+    }
+    Navigator.pushNamed(context, "/bionicview", arguments: {'text': sender});
+  }
+
   Future<void> bionify() async {
     var apikey = apihelper().apikey;
     print(apikey);
@@ -94,6 +112,22 @@ class _bionicpageState extends State<bionicpage> {
                     },
                     child: const Text(
                       "Bionify!",
+                    )), 
+                    SizedBox(height: 40),
+                    ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(28.0),
+                          side: const BorderSide(
+                              color: Color.fromARGB(255, 11, 37, 138))),
+                      primary: Colors.transparent,
+                      minimumSize: const Size(200, 75),
+                    ),
+                    onPressed: () {
+                      pickImage();
+                    },
+                    child: const Text(
+                      "Use OCR!",
                     )),
               ],
             ),

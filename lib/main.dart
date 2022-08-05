@@ -1,3 +1,4 @@
+import 'package:data/bionic-ocr.dart';
 import 'package:data/bionic-page.dart';
 import 'package:data/bionic-text.dart';
 import 'package:data/img-sel.dart';
@@ -21,6 +22,8 @@ void main() {
       '/bionic': (context) => ttspage(),
       '/pictotext': (context) => pictotext(),
       '/bionicview': (context) => bionicview(),
+      '/bionicocr': (context) => bionicocr(),
+      
     },
   ));
 }
