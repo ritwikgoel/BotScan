@@ -19,8 +19,8 @@ var response;
 final TextEditingController bionicController = TextEditingController();
 
 class _bionicpageState extends State<bionicpage> {
-    final ImagePicker _picker = ImagePicker();
-     Future pickImage() async {
+  final ImagePicker _picker = ImagePicker();
+  Future pickImage() async {
     late String sender;
     final image = await ImagePicker().pickImage(source: ImageSource.camera);
     if (image == null) return;
@@ -32,7 +32,27 @@ class _bionicpageState extends State<bionicpage> {
     } catch (e) {
       print("exception on OCR operation: ${e.toString()}");
     }
-    Navigator.pushNamed(context, "/bionicview", arguments: {'text': sender});
+    var apikey = apihelper().apikey;
+    final url = Uri.parse("https://bionic-reading1.p.rapidapi.com/convert");
+
+    final headers = {
+      "content-type": "application/x-www-form-urlencoded",
+      "X-RapidAPI-Key": "$apikey",
+      "X-RapidAPI-Host": "bionic-reading1.p.rapidapi.com",
+      "useQueryString": "true"
+    };
+    final json = {
+      "content": sender,
+      "response_type": "html",
+      "request_type": "html",
+      "fixation": "1",
+      "saccade": "10"
+    };
+    response = await post(url, headers: headers, body: json);
+    print(response.body);
+    print('Status code: ${response.statusCode}');
+    Navigator.pushNamed(context, "/bionicview",
+        arguments: {'text': response.body});
   }
 
   Future<void> bionify() async {
@@ -112,9 +132,9 @@ class _bionicpageState extends State<bionicpage> {
                     },
                     child: const Text(
                       "Bionify!",
-                    )), 
-                    SizedBox(height: 40),
-                    ElevatedButton(
+                    )),
+                SizedBox(height: 40),
+                ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(28.0),
