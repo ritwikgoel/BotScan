@@ -8,6 +8,8 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
 import 'package:simple_ocr_plugin/simple_ocr_plugin.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'loading_screen.dart';
 
 class get_img extends StatefulWidget {
   const get_img({Key? key}) : super(key: key);
@@ -33,26 +35,33 @@ class _get_imgState extends State<get_img> {
     Navigator.pushNamed(context, "/pictotext", arguments: {'text': sender});
   }
 
+  bool isloading = false;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        
-        child: Column(
-          children: [
-            SizedBox(height: 40,),
-            Lottie.asset("assets/blink.json"),
-            TextButton(
-                onPressed: pickImage,
-                child: const Text(
-                  "Tap to Scan",
-                  style: TextStyle(
-                      fontSize: 45, color: Color.fromARGB(255, 255, 255, 255),fontStyle: FontStyle.italic),
-                )),
-          ],
+   
+      return Scaffold(
+        backgroundColor: Colors.black,
+        body: Center(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 40,
+              ),
+              Lottie.asset("assets/blink.json"),
+              TextButton(
+                  onPressed: pickImage,
+                  child: const Text(
+                    "Tap to Scan",
+                    style: TextStyle(
+                        fontSize: 45,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontStyle: FontStyle.italic),
+                  )),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
-}
+

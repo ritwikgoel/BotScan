@@ -7,6 +7,7 @@ import 'package:lottie/lottie.dart';
 import 'package:http/http.dart' as http;
 import 'package:simple_ocr_plugin/simple_ocr_plugin.dart';
 import 'api-handler.dart';
+import 'loading_screen.dart';
 
 class bionicpage extends StatefulWidget {
   const bionicpage({Key? key}) : super(key: key);
@@ -81,77 +82,95 @@ class _bionicpageState extends State<bionicpage> {
         arguments: {'text': response.body});
   }
 
+  bool isloading = false;
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          backgroundColor: Colors.black,
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height / 5,
-                ),
-                Lottie.asset(
-                  "assets/magnify.json",
-                  height: MediaQuery.of(context).size.height / 8,
-                ),
-                TextField(
-                  // ignore: prefer_const_constructors
-                  style: TextStyle(color: Colors.white),
-                  controller: bionicController,
-                  decoration: InputDecoration(
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.cyan),
-                    ),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.cyan),
-                    ),
-                    contentPadding: EdgeInsets.all(30),
-                    labelText: 'Enter Text to Bionify!',
-                    labelStyle: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontStyle: FontStyle.italic),
+    if (isloading = false) {
+      return const LoadingPage();
+    } else {
+      return MaterialApp(
+        home: Scaffold(
+            backgroundColor: Colors.black,
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 5,
                   ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height / 10,
-                ),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(28.0),
-                          side: const BorderSide(
-                              color: Color.fromARGB(255, 11, 37, 138))),
-                      primary: Colors.transparent,
-                      minimumSize: const Size(200, 75),
+                  Lottie.asset(
+                    "assets/magnify.json",
+                    height: MediaQuery.of(context).size.height / 8,
+                  ),
+                  TextField(
+                    // ignore: prefer_const_constructors
+                    style: TextStyle(color: Colors.white),
+                    controller: bionicController,
+                    decoration: InputDecoration(
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.cyan),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.cyan),
+                      ),
+                      contentPadding: EdgeInsets.all(30),
+                      labelText: 'Enter Text to Bionify!',
+                      labelStyle: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,
+                          fontStyle: FontStyle.italic),
                     ),
-                    onPressed: () {
-                      bionify();
-                    },
-                    child: const Text(
-                      "Bionify!",
-                    )),
-                SizedBox(height: 40),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(28.0),
-                          side: const BorderSide(
-                              color: Color.fromARGB(255, 11, 37, 138))),
-                      primary: Colors.transparent,
-                      minimumSize: const Size(200, 75),
-                    ),
-                    onPressed: () {
-                      pickImage();
-                    },
-                    child: const Text(
-                      "Use OCR!",
-                    )),
-              ],
-            ),
-          )),
-    );
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 10,
+                  ),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(28.0),
+                            side: const BorderSide(
+                                color: Color.fromARGB(255, 11, 37, 138))),
+                        primary: Colors.transparent,
+                        minimumSize: const Size(200, 75),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          isloading = true;
+                        });
+                        bionify();
+                        setState(() {
+                          isloading = false;
+                        });
+                      },
+                      child: const Text(
+                        "Bionify!",
+                      )),
+                  SizedBox(height: 40),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(28.0),
+                            side: const BorderSide(
+                                color: Color.fromARGB(255, 11, 37, 138))),
+                        primary: Colors.transparent,
+                        minimumSize: const Size(200, 75),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          isloading = true;
+                        });
+                        pickImage();
+                        setState(() {
+                          isloading = false;
+                        });
+                      },
+                      child: const Text(
+                        "Use OCR!",
+                      )),
+                ],
+              ),
+            )),
+      );
+    }
   }
 }
